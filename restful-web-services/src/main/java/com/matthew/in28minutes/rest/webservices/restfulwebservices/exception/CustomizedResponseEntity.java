@@ -5,6 +5,7 @@
  */
 package com.matthew.in28minutes.rest.webservices.restfulwebservices.exception;
 
+import com.matthew.in28minutes.rest.webservices.restfulwebservices.user.PostException;
 import com.matthew.in28minutes.rest.webservices.restfulwebservices.user.UserNotFoundException;
 import java.util.Date;
 import org.springframework.http.HttpHeaders;
@@ -37,6 +38,13 @@ public class CustomizedResponseEntity extends ResponseEntityExceptionHandler{
         
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity(exceptionResponse,HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(PostException.class)
+    public final ResponseEntity<Object> handlePostException(PostException ex, WebRequest request){
+        
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity(exceptionResponse,HttpStatus.BAD_REQUEST);
     }
     
     @Override
