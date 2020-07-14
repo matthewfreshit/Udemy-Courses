@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.matthew.in28minutes.microservices</groupId>
-	<artifactId>restful-microservices</artifactId>
+	<artifactId>currency-conversion-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>limits-service</name>
-	<description>Demo project for spring microservices</description>
+	<name>currency-conversion-service</name>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -23,6 +23,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+                        <version>2.3.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+                        <version>2.3.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -30,9 +36,25 @@
                         <version>2.2.3.RELEASE</version>
 		</dependency>
                 <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+                        <version>2.2.3.RELEASE</version>
+		</dependency>
+                <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                        <version>2.2.3.RELEASE</version>
+		</dependency>
+                <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
                 <version>2.2.3.RELEASE</version>
+                <exclusions>
+                        <exclusion>
+                                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                                <artifactId>jackson-dataformat-xml</artifactId>
+                        </exclusion>
+                </exclusions>
                </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -70,6 +92,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                                <version>2.3.1.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>

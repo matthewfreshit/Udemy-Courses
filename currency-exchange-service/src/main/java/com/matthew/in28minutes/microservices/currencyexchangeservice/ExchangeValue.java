@@ -6,6 +6,9 @@
 package com.matthew.in28minutes.microservices.currencyexchangeservice;
 
 import java.math.BigDecimal;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,11 +16,20 @@ import org.springframework.stereotype.Component;
  * @author matth
  */
 @Component
+@Entity
 public class ExchangeValue {
+    
+    @Id
     private Long id;
+    
+    @Column(name ="currency_from")
     private String from;
+    
+    @Column(name ="currency_to")
     private String to;
+    
     private BigDecimal conversionMultiple;
+    private int port;
 
     public ExchangeValue() {
     }
@@ -28,6 +40,14 @@ public class ExchangeValue {
         this.from = from;
         this.to = to;
         this.conversionMultiple = conversionMultiple;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public Long getId() {
